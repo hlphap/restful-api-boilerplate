@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 function connect() {
-    mongoose.connect("mongodb://localhost/nodejs-api-starter", {
+    mongoose.connect("mongodb://localhost/fastdelivery", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
@@ -15,6 +15,4 @@ function connect() {
         })
 }
 
-export {
-    connect
-}
+export default connect;

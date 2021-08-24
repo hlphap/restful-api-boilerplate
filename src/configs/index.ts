@@ -1,5 +1,5 @@
-import { connect } from "./db";
+import connect from "./db";
 
-export {
+export default {
     connect
-}
+};
