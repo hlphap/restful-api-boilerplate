@@ -1,15 +1,15 @@
-import { ErrorType, ErrorValidation, ErrorResponse } from './types';
+import { ErrorValidation, ErrorResponse } from './types';
 
 export class CustomError extends Error {
   private httpStatusCode: number;
-  private errorType: ErrorType;
+  private errorType: string;
   private errors: string[] | null;
   private errorRaw: any;
   private errorsValidation: ErrorValidation[] | null;
 
   constructor(
     httpStatusCode: number,
-    errorType: ErrorType,
+    errorType: string,
     message: string,
     errors: string[] | null = null,
     errorRaw: any = null,

@@ -10,7 +10,7 @@ dotenv.config({ path: path.join(process.cwd(), `.env${process.env.NODE_ENV === '
  * Environment variables
  */
 
-const env = {
+export const env = {
     node: process.env.NODE_ENV || 'development',
     isProduction: process.env.NODE_ENV === 'production',
     isTest: process.env.NODE_ENV === 'test',
@@ -51,5 +51,3 @@ const env = {
         password: getOsEnv('SWAGGER_PASSWORD'),
     }
 }
-
-export default env;

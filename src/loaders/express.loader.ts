@@ -5,7 +5,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import env from "../configs/env"
+import { env } from "../configs/env"
 import { errorConverter, errorHandler } from '../middlewares/error';
 
 export default () => {
@@ -39,9 +39,9 @@ export default () => {
     }
 
     //api routes
-    // app.use(env.app.routePrefix, (req, res, next)=>{
-    //     console.log("Phap");
-    // });
+    app.use(env.app.routePrefix, (req, res, next)=>{
+        throw new Error("phap")
+    });
 
     //convert error to ApiError, if needed
     app.use(errorConverter)
@@ -49,7 +49,7 @@ export default () => {
     //handle error
     app.use(errorHandler)
 
-    app.listen(env.app.port, () => console.log(`Server is listening on port ${env.app.port}`));
+    app.listen(env.app.port);
 
     return app;
 }
