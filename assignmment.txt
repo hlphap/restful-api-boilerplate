@@ -1,0 +1,24 @@
+{
+    Loader : {
+        expressLoader -> Processing -> Completed (route not completed)
+    }
+    Configs: {
+        env.ts -> Processing -> Completed
+    }
+    Libs: {
+        os.ts -> Processing -> Completed
+        logger : {
+            
+        }
+    },
+    Utils: {
+        response: {
+            custom-error: {
+                custom-error.ts -> Processing -> Completed
+                types.ts -> Processing -> Completed
+            }
+        }
+    }
+
+    app.ts -> Processing
+}
