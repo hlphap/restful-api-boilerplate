@@ -8,7 +8,7 @@
     Libs: {
         os.ts -> Processing -> Completed
         logger : {
-            
+
         }
     },
     Utils: {
@@ -22,3 +22,5 @@
 
     app.ts -> Processing
 }
+
+//Processing Route -> Prepare Controller -> Model -> Interface

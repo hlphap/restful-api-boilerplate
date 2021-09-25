@@ -1,5 +1,2 @@
-import DVMethodControllers from "./DVMethods";
-
-export {
-    DVMethodControllers
-}
+export * as userControllers from "./user.controllers";
+export * as authControllers from "./auth.controllers";

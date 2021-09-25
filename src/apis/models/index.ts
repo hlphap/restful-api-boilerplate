@@ -1,5 +1,5 @@
-import DVMethod from "./dvmethods"
+import { User } from "./user.model"
 
 export {
-    DVMethod
+    User,
 };
