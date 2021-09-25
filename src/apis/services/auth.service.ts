@@ -29,7 +29,6 @@ const changePassword = async (payload: JwtPayload, passwordPre: string, password
     throw new CustomError(httpStatus.UNAUTHORIZED, "Authentication", "Incorrect password");
   }
   user.password = passwordNew;
-  console.log(payload);
   return user.save();
 }
 

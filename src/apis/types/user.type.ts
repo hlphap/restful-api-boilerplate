@@ -1,4 +1,4 @@
-import mongoose, { Model, Document, model  } from 'mongoose';
+import mongoose, { Model, Document, model } from 'mongoose';
 
 export type Role = "ADMINISTRATOR" | "STANDARD";
 
