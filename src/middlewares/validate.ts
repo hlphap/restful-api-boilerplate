@@ -8,6 +8,7 @@ import { Request, Response, NextFunction } from 'express';
 export const validate = (schema) => (req: Request, res: Response, next: NextFunction) => {
     const validSchema = pickKeys(schema, ['params', 'query', 'body']);
     const object = pickKeys(req, Object.keys(validSchema));
+    console.log(object);
     const { value, error } = Joi.compile(validSchema).prefs({ errors: { label: 'key' }, abortEarly: false })
         .validate(object);
     if (error) {
