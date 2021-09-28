@@ -1,20 +1,22 @@
 {
-    "name": "restfulapi_template",
+    "name": "restfulapi-template",
     "version": "2.0.0",
-    "description": "Template RestfullAPI with NodeJS",
+    "description": "Template RestfulAPI with NodeJS",
     "main": "index.js",
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/server.ts",
         "prettier": "prettier --config .prettierrc --write \"./**/*.{ts,js,css,scss,json,md}\"",
-        "lint": "eslint --max-warnings 0 --ext .js,ts src",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "lint": "eslint --max-warnings 0 --ext .js,ts src"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hlphap/restfullapi-template.git"
     },
     "keywords": [
-        "template-nodejs"
+        "nodejs",
+        "typescript",
+        "mongoose",
+        "expressJs"
     ],
     "author": "Phap Huynh",
     "license": "ISC",
