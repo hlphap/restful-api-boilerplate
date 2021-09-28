@@ -1,57 +1,60 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 
-import { IUser, Role, UserModel } from '../types/';
+import { IUser, Role, UserModel } from '../types';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const UserSchema = new Schema<IUser, UserModel>({
-    email: {
+const UserSchema = new Schema<IUser, UserModel>(
+    {
+        email: {
             type: String,
             required: true,
             unique: true,
             trim: true,
             lowercase: true,
-            validate(value: String) {
+            validate(value: string) {
                 if (!validator.isEmail(value)) {
-                    throw new Error('Invalid email')
+                    throw new Error('Invalid email');
                 }
             },
         },
-    password: {
+        password: {
             type: String,
             required: true,
             trim: true,
             minlength: 6,
             validate(value: String) {
                 if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
-                    throw new Error('Password must contain at least one letter and one number')
+                    throw new Error('Password must contain at least one letter and one number');
                 }
             },
             private: true,
         },
-    displayName: {
+        displayName: {
             type: String,
             required: true,
             trim: true,
         },
-    role: {
-        type: String,
-        default: 'STANDARD' as Role,
-    }
-},{
-    timestamps: true,
-})
+        role: {
+            type: String,
+            default: 'STANDARD' as Role,
+        },
+    },
+    {
+        timestamps: true,
+    },
+);
 
-UserSchema.statics.isEmailTaken = async function(email, excludeUserID) {
-    const user = await this.findOne({ email, _id: { $ne: excludeUserID } })
-    return !!user
-}
+UserSchema.statics.isEmailTaken = async function (email, excludeUserID) {
+    const user = await this.findOne({ email, _id: { $ne: excludeUserID } });
+    return !!user;
+};
 
-UserSchema.methods.checkPasswordMatch = function(password: string) {
+UserSchema.methods.checkPasswordMatch = function (password: string) {
     return bcrypt.compareSync(password, this.password);
-}
+};
 
 UserSchema.pre('save', async function (next) {
     const user = this;
@@ -59,11 +62,8 @@ UserSchema.pre('save', async function (next) {
         user.password = await bcrypt.hash(user.password, 10);
     }
     next();
-})
+});
 
-const User = mongoose.model<IUser, UserModel>("users", UserSchema);
+const User = mongoose.model<IUser, UserModel>('users', UserSchema);
 
-export {
-    UserSchema,
-    User,
-}
+export { UserSchema, User };

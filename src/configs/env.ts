@@ -1,10 +1,10 @@
-import dotenv from "dotenv";
-import path from "path";
+import dotenv from 'dotenv';
+import path from 'path';
 
-import pkg from "../../package.json";
-import { getOsEnv, normalizePort, toBool, toNumber } from "../libs/os";
+import pkg from '../../package.json';
+import { getOsEnv, normalizePort, toBool, toNumber } from '../libs/os';
 
-dotenv.config({ path: path.join(process.cwd(), `.env${process.env.NODE_ENV === 'test' ? '.test' : ''}`) })
+dotenv.config({ path: path.join(process.cwd(), `.env${process.env.NODE_ENV === 'test' ? '.test' : ''}`) });
 
 /**
  * Environment variables
@@ -49,5 +49,5 @@ export const env = {
         route: getOsEnv('SWAGGER_ROUTE'),
         username: getOsEnv('SWAGGER_USERNAME'),
         password: getOsEnv('SWAGGER_PASSWORD'),
-    }
-}
+    },
+};

@@ -1,23 +1,23 @@
-import  { Logger }  from './libs/logger';
+import { Logger } from './libs/logger';
 import { banner } from './libs/banner';
 
-import expressLoader from "./loaders/express.loader";
+import expressLoader from './loaders/express.loader';
 import winstonLoader from './loaders/winston.loader';
 import mongooseLoader from './loaders/mongoose.loader';
 
 const log = new Logger(__filename);
 
 async function initServer() {
-    //logging with winston
+    // logging with winston
     winstonLoader();
 
-    //Database with mongoose
+    // Database with mongoose
     await mongooseLoader();
 
-    //express
-    const app = expressLoader();
+    // express
+    expressLoader();
 }
 
 initServer()
     .then(() => banner(log))
-    .catch(error => log.error('Application is crashed: ' + error));
+    .catch((error) => log.error(`Application is crashed: ${error}`));

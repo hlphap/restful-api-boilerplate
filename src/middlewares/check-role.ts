@@ -10,8 +10,9 @@ import { Role } from '../apis/types';
  * @returns next() | next(error)
  */
 
-export const checkRole = (roles: Role[], isSelfAllowed = false) => {
-    return async (req: Request, res: Response, next: NextFunction) => {
+export const checkRole =
+    (roles: Role[], isSelfAllowed = false) =>
+    async (req: Request, res: Response, next: NextFunction) => {
         const { id, role } = req.jwtPayload;
         const { userID } = req.params;
 
@@ -24,10 +25,13 @@ export const checkRole = (roles: Role[], isSelfAllowed = false) => {
         }
 
         if (roles.indexOf(role) === -1) {
-            const error = new CustomError(httpStatus.UNAUTHORIZED, 'Authorization', `Unauthorized - Insufficient user rights. Current role: ${role}. Required role: ${roles.toString()}`);
+            const error = new CustomError(
+                httpStatus.UNAUTHORIZED,
+                'Authorization',
+                `Unauthorized - Insufficient user rights. Current role: ${role}. Required role: ${roles.toString()}`,
+            );
             return next(error);
         }
 
         return next();
-    }
-}
+    };

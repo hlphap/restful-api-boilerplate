@@ -8,14 +8,10 @@ export default () => {
             new transports.Console({
                 level: env.log.level,
                 handleExceptions: true,
-                format: env.node !== 'development'
-                    ? format.combine(
-                        format.json()
-                    )
-                    : format.combine(
-                        format.colorize(),
-                        format.simple()
-                    ),
+                format:
+                    env.node !== 'development'
+                        ? format.combine(format.json())
+                        : format.combine(format.colorize(), format.simple()),
             }),
         ],
     });
